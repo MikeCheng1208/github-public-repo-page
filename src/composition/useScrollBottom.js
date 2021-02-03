@@ -1,10 +1,10 @@
 import { onMounted, onUnmounted, ref } from "vue";
 import { throttle } from "../lib/Throttle";
 
-export function useScrollDown() {
+export function useScrollBottom() {
   const isBottom = ref(false);
 
-  const scrollDownFn = throttle(() => {
+  const scrollBottom = throttle(() => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
     if (scrollTop + clientHeight > scrollHeight - 100) {
       isBottom.value = true;
@@ -14,11 +14,11 @@ export function useScrollDown() {
   });
 
   onMounted(() => {
-    window.addEventListener("scroll", scrollDownFn);
+    window.addEventListener("scroll", scrollBottom);
   });
 
   onUnmounted(() => {
-    window.removeEventListener("scroll", scrollDownFn);
+    window.removeEventListener("scroll", scrollBottom);
   });
 
   return { isBottom };

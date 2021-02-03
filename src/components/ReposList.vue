@@ -1,6 +1,6 @@
 <script>
 import { inject, toRefs, watch } from "vue";
-import { useScrollDown } from "../composition/useScrollDown";
+import { useScrollBottom } from "../composition/useScrollBottom";
 import Loading from "./Loading.vue";
 export default {
   name: "ReposList",
@@ -10,7 +10,7 @@ export default {
   setup() {
     const mapStore = inject("mapStore");
     const { state, fetchRepos, setPage } = mapStore;
-    const { isBottom } = useScrollDown();
+    const { isBottom } = useScrollBottom();
 
     watch(isBottom, newVal => {
       if (!newVal) return;
