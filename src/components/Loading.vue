@@ -2,7 +2,7 @@
 export default {};
 </script>
 <template>
-  <div class="lds-ellipsis">
+  <div class="lds_ellipsis">
     <div></div>
     <div></div>
     <div></div>
@@ -14,13 +14,13 @@ export default {};
 .loading {
   width: 100%;
 }
-.lds-ellipsis {
+.lds_ellipsis {
   position: relative;
   width: 80px;
   height: 80px;
   margin: 0 auto;
 }
-.lds-ellipsis div {
+.lds_ellipsis div {
   position: absolute;
   top: 33px;
   width: 13px;
@@ -29,23 +29,23 @@ export default {};
   background: #888;
   animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
-.lds-ellipsis div:nth-child(1) {
+.lds_ellipsis div:nth-child(1) {
   left: 8px;
-  animation: lds-ellipsis1 0.6s infinite;
+  animation: lds_ellipsis1 0.6s infinite;
 }
-.lds-ellipsis div:nth-child(2) {
+.lds_ellipsis div:nth-child(2) {
   left: 8px;
-  animation: lds-ellipsis2 0.6s infinite;
+  animation: lds_ellipsis2 0.6s infinite;
 }
-.lds-ellipsis div:nth-child(3) {
+.lds_ellipsis div:nth-child(3) {
   left: 32px;
-  animation: lds-ellipsis2 0.6s infinite;
+  animation: lds_ellipsis2 0.6s infinite;
 }
-.lds-ellipsis div:nth-child(4) {
+.lds_ellipsis div:nth-child(4) {
   left: 56px;
-  animation: lds-ellipsis3 0.6s infinite;
+  animation: lds_ellipsis3 0.6s infinite;
 }
-@keyframes lds-ellipsis1 {
+@keyframes lds_ellipsis1 {
   0% {
     transform: scale(0);
   }
@@ -53,7 +53,7 @@ export default {};
     transform: scale(1);
   }
 }
-@keyframes lds-ellipsis3 {
+@keyframes lds_ellipsis3 {
   0% {
     transform: scale(1);
   }
@@ -61,7 +61,7 @@ export default {};
     transform: scale(0);
   }
 }
-@keyframes lds-ellipsis2 {
+@keyframes lds_ellipsis2 {
   0% {
     transform: translate(0, 0);
   }

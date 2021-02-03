@@ -9,42 +9,42 @@ export default {
   },
   setup() {
     const mapStore = inject("mapStore");
-    const { state, fetchGetRepos, setPage } = mapStore;
-    const { isDown } = useScrollDown();
+    const { state, fetchRepos, setPage } = mapStore;
+    const { isBottom } = useScrollDown();
 
-    watch(isDown, newVal => {
+    watch(isBottom, newVal => {
       if (!newVal) return;
       setPage();
-      fetchGetRepos(state.username, state.page, state.limit);
+      fetchRepos(state.userName, state.page, state.limit);
     });
 
     return {
       ...toRefs(state),
-      isDown
+      isBottom
     };
   }
 };
 </script>
 
 <template>
-  <ul class="card-box">
+  <ul class="card_box">
     <li v-for="item in repoList" :key="item.name">
       <h1 class="title">{{ item.name }}</h1>
       <h2 class="description">{{ item.description }}</h2>
       <a class="url" :href="item.html_url" target="_blank">
         {{ item.html_url }}
       </a>
-      <div class="star-box">
-        <img class="star-icon" src="../assets/star.svg" alt="" />
+      <div class="star_box">
+        <img class="star_icon" src="../assets/star.svg" alt="" />
         {{ item.stargazers_count }}
       </div>
     </li>
   </ul>
-  <Loading v-if="page < all_page" />
+  <Loading v-if="page < allPage" />
 </template>
 
 <style lang="scss" scoped>
-.card-box {
+.card_box {
   > li {
     display: block;
     width: 500px;
@@ -82,14 +82,14 @@ export default {
         font-weight: bold;
       }
     }
-    .star-box {
+    .star_box {
       display: flex;
       align-items: center;
       justify-content: flex-start;
       height: 100%;
       font-weight: bold;
       color: #888;
-      > img.star-icon {
+      > img.star_icon {
         display: block;
         width: 20px;
         margin-right: 4px;

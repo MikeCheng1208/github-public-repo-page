@@ -1,4 +1,4 @@
-export const Throttle = (fn = () => {}, timer = 100) => {
+export const throttle = (fn = () => {}, timer = 100) => {
   let reTimes = null;
   return () => {
     if (reTimes) {

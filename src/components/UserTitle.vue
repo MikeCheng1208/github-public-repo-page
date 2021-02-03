@@ -1,36 +1,33 @@
 <script>
-import { inject, ref, toRefs } from "vue";
+import { ref, toRefs, inject, onMounted } from "vue";
+import { useRepoSearch } from "../composition/useRepoSearch";
 export default {
   name: "UserTitle",
   setup() {
     const mapStore = inject("mapStore");
-    const {
-      state,
-      resetData,
-      setUserName,
-      fetchUserData,
-      fetchGetRepos
-    } = mapStore;
-    const editNameText = ref("");
+    const { state } = mapStore;
+    const { searchData } = useRepoSearch();
 
+    const editNameText = ref("");
     const isEdit = ref(false);
 
     const handEditNameFn = () => {
-      editNameText.value = state.username;
+      editNameText.value = state.userName;
       isEdit.value = true;
     };
 
-    const handSeachTextFn = async () => {
+    const handSeachTextFn = () => {
       isEdit.value = false;
-      resetData();
-      setUserName(editNameText.value);
-      await fetchUserData(state.username);
-      await fetchGetRepos(state.username, state.page, state.limit);
+      searchData(editNameText.value);
     };
 
     const closeEditFn = () => {
       isEdit.value = false;
     };
+
+    onMounted(() => {
+      searchData("MikeCheng1208");
+    });
 
     return {
       ...toRefs(state),
@@ -45,9 +42,9 @@ export default {
 </script>
 <template>
   <div class="user_title">
-    <img :src="avatar_url" alt="" />
+    <img :src="avatarUrl" alt="" />
     <div class="edit_box">
-      <h1 v-show="!isEdit">{{ username }}</h1>
+      <h1 v-show="!isEdit">{{ userName }}</h1>
       <input
         v-show="isEdit"
         v-on:keyup.enter="handSeachTextFn"

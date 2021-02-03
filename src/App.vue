@@ -1,5 +1,5 @@
 <script>
-import { onMounted, provide } from "vue";
+import { provide } from "vue";
 import store from "@/composition/store";
 import UserTitle from "@/components/UserTitle.vue";
 import ReposList from "@/components/ReposList.vue";
@@ -11,14 +11,6 @@ export default {
   },
   setup() {
     provide("mapStore", store);
-    onMounted(async () => {
-      await store.fetchUserData("MikeCheng1208");
-      await store.fetchGetRepos(
-        store.state.username,
-        store.state.page,
-        store.state.limit
-      );
-    });
   }
 };
 </script>
