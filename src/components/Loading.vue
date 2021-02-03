@@ -1,6 +1,3 @@
-<script>
-export default {};
-</script>
 <template>
   <div class="lds_ellipsis">
     <div></div>
